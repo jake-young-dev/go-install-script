@@ -1,2 +1,5 @@
 # go-install-script
-shell script to install golang on github workflows
+A simple, hacky script to install Golang on git action runner workflows for faster pipelines. When using [actions/setup-go](https://github.com/actions/setup-go) my testing pipelines averaged 8-10 minutes, however, with this script they are down to ~20s.
+
+# Issues
+This repo is a as brain-dead as I could make it and is loosely based off of the go tool script from [catthehacker](https://github.com/catthehacker/docker_images/blob/master/linux/ubuntu/scripts/go.sh). I am not very experienced in shell so if you have any improvements, recommendations, or bug fixes please open an issue or a PR.
