@@ -40,7 +40,7 @@ echo "Downloading go files for ${DL_VERSION} with ${DL_ARCH}"
 # --strip-components=1 strip first leading component from file name on extraction
 # -C change to GOPATH directory
 if wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | tar -zxf - --strip-components=1 -C "$GOPATH"; then
-  echo "Downloaded go files"
+  echo "Downloaded and extracted go files"
 else
   echo "FATAL: Unable to download and extract go files"
   exit 1
