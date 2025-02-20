@@ -11,11 +11,9 @@ jobs:
     steps:
       - name: "checkout repo"
         uses: actions/checkout@v4
-        sparse_checkout: |
-          go.sh
       
       - name: "run script"
         run: |
           chmod +x ./go.sh
-          echo -e "module git.jakeyoungdev.com/jake.young.dev/go-install-script\n\ngo 1.23.5" > go.mod
+          echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
           ./go.sh ${{ vars.GO_TEST_ARCH }}
