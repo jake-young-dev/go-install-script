@@ -3,7 +3,7 @@ name: "go-install-test"
 on:
   push:
     branches: master
-    paths: [ "go.sh" ]
+    paths: go.sh
 
 jobs:
   install-test:
