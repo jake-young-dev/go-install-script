@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: "run script"
+        shell: bash
         run: |
           chmod +x ./go.sh
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
