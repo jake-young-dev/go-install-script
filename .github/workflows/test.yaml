@@ -8,7 +8,6 @@ jobs:
   install-test:
     runs-on: [ubuntu-latest]
     steps:
-      - name: "checkout repo"
         uses: actions/checkout@v4
       
       - name: "run script"
