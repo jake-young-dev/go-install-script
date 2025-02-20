@@ -4,7 +4,7 @@ A simple, hacky script to install Golang for action workflows. This provides the
 <br />
 
 # Benchmarks
-Benchmarks are pulled using git action runner timestamps and do not include the setup-go teardown time.
+Benchmarks are pulled using git action runner timestamps and includes the setup-go teardown time.
 | Install Method | Time to Run |
 | - | - |
 | go.sh | 3s |
