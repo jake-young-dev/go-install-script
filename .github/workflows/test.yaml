@@ -15,5 +15,5 @@ jobs:
         shell: bash
         run: |
           chmod +x ./go.sh
-          echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
-          ./go.sh ${{ vars.GO_TEST_ARCH }}
+          sudo echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
+          sudo ./go.sh ${{ vars.GO_TEST_ARCH }}
