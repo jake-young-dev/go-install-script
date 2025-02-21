@@ -1,8 +1,12 @@
 name: 'go-install-script'
-description: 'Quickly install golang for linux workflows'
+description: 'quick and dirty install golang for linux workflows'
+inputs:
+  architecture:  # id of input
+    description: 'linux architecture to use for Go files'
+    required: true
 runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh
+      run: ${{ github.action_path }}/go.sh $${{ inputs.architecture }}
       shell: bash

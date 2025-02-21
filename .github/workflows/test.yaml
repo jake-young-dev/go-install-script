@@ -17,3 +17,5 @@ jobs:
 
       - name: "run go script"
         uses: jake-young-dev/go-install-script@master
+        with:
+          architecture: amd64
