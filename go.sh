@@ -18,6 +18,19 @@ DL_ARCH=$1
 DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
 
+#check if go is already present before starting install process
+GO_CHECK=$(go version)
+if [[ "$GO_CHECK" ]]; then
+  #if overwrite flag is set remove old go files
+  if [[ "$2" == "yes" ]]; then
+    sudo rm -r /usr/bin/go 
+    sudo rm -r /usr/bin/gofmt
+  else
+    echo "FATAL: Go version {$GO_CHECK} already installed, set overwrite to 'yes' if you wish to update installed version"
+    exit 1
+  fi
+fi
+
 #handle go path
 GOPATH="${ACT_TOOLSDIRECTORY}/go/${DL_VERSION}/${DL_ARCH}"
 echo "Creating GOPATH directories"
@@ -46,23 +59,32 @@ else
   exit 1
 fi
 
-#check for go version
-if OUTPUT=$("$GOPATH/bin/go" version); then
-  echo "Setup successful for: {$OUTPUT}"
-else
-  echo "FATAL: Failed to extract go files to system"
-  exit 1
-fi
-
 #link bin directories for system command
+# -s symbolic link
 echo "Creating symbolic link for go command"
 sudo ln -s "$GOPATH/bin"/* /usr/bin
 
-#check for go version
-if OUTPUT=$(go version); then
-  echo "Command setup successful for: {$OUTPUT}"
+#grab installed go version
+DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
+if [[ -z "$DL_GO_CMD_VERSION" ]]; then
+  echo "FATAL: Failed to install go files"
+  exit 1
 else
-  echo "FATAL: Failed to create link for go command"
+  echo "Go setup for {$DL_GO_CMD_VERSION}"
+fi
+
+#grab go version using go command
+GLOBAL_GO_CMD_VERSION=$(go version)
+if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
+  echo "FATAL: Failed to register go command"
+  exit 1
+fi
+
+#ensure global go version matches the requested installed version
+if [[ "$DL_GO_CMD_VERSION" == "$GLOBAL_GO_CMD_VERSION" ]]; then
+  echo "Go command successfully setup for: {$GLOBAL_GO_CMD_VERSION}"
+else
+  echo "FATAL: Global go version does not match installed version, is go already installed?"
   exit 1
 fi
 

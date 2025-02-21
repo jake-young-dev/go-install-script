@@ -4,9 +4,13 @@ inputs:
   architecture:
     description: "linux architecture to use for Go files (e.g. amd64)"
     required: true
+  overwrite:
+    description: "overwrite any current go versions installed"
+    required: false
+    default: "no"
 runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }}
+      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.overwrite }}
       shell: bash
