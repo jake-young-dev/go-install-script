@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: "setup env and remove cached go"
         shell: bash
-        run: |  #cached go version must be removed for test to properly run
+        run: |  #images come with go preloaded on github hosted runners, removing for tests
           sudo rm -r /usr/bin/go 
           sudo rm -r /usr/bin/gofmt
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
