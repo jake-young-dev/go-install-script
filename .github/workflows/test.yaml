@@ -6,16 +6,14 @@ on:
 
 jobs:
   test:
-    runs-on: [ubuntu-22.04-slim]
+    runs-on: [ubuntu-22.04]
     steps:
-      - name: "checkout files"
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            go.sh
-      
-      - name: "run install script"
+      - name: "setup env and remove cached go"
         shell: bash
-        run: |
+        run: |  #cached go version must be removed for test to properly run
+          sudo rm -r /usr/bin/go 
+          sudo rm -r /usr/bin/gofmt
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
-          sudo ./go.sh ${{ vars.GO_TEST_ARCH }}
+
+      - name: "run go script"
+        uses: jake-young-dev/go-install-script
