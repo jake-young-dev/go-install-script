@@ -16,4 +16,4 @@ jobs:
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
 
       - name: "run go script"
-        uses: jake-young-dev/go-install-script
+        uses: jake-young-dev/go-install-script@v0.0.1
