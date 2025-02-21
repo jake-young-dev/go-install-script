@@ -6,7 +6,9 @@ runs:
     - name: "i hate this"
       run: ls
       shell: bash
-      
+    - name: "i hate this too"
+      run: ls ${{ github.action_path }}
+      shell: bash
     - name: "run script"
       run: ./go.sh
       shell: bash
