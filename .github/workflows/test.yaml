@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: "setup env and remove cached go"
         shell: bash
-        run: |  #images come with go preloaded on github hosted runners, removing for tests
+        run: |
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
 
       - name: "run go script"
         uses: jake-young-dev/go-install-script@master
         with:
           architecture: amd64
-          overwrite: yes
+          overwrite: yes #removes old go versions if present (github hosted runners come preloaded with go)

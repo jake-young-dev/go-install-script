@@ -12,6 +12,11 @@ Benchmarks are pulled using git action runner timestamps and includes the teardo
 
 <br />
 
+# Example Usage
+The workflow file contains a good [example](https://github.com/jake-young-dev/go-install-script/blob/master/.github/workflows/test.yaml#L16), I recommend using a tagged release to avoid unexpected changes that may come to the master branch.
+
+<br />
+
 # Issues
 This repo is a as brain-dead as I could make it and can only pull a single linux release for now. The code is loosely based off of the go tool script from [catthehacker](https://github.com/catthehacker/docker_images/blob/master/linux/ubuntu/scripts/go.sh). I am not very experienced in bash so if you have any improvements, recommendations, or bug fixes please open an issue.
 
