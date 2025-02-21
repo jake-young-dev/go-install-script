@@ -4,5 +4,5 @@ runs:
   using: composite
   steps:
     - name: "run script"
-      run: go.sh
+      run: ./go.sh
       shell: bash
