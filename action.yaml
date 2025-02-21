@@ -3,12 +3,6 @@ description: 'Quickly install golang for linux workflows'
 runs:
   using: composite
   steps:
-    - name: "i hate this"
-      run: ls
-      shell: bash
-    - name: "i hate this too"
-      run: ls ${{ github.action_path }}
-      shell: bash
     - name: "run script"
-      run: ./go.sh
+      run: ${{ github.action_path }}/go.sh
       shell: bash
