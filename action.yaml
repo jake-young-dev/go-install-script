@@ -1,5 +1,8 @@
 name: 'go-install-script'
 description: 'Quickly install golang for linux workflows'
 runs:
-  using: bash
-  main: go.sh
+  using: composite
+  steps:
+    - name: "run script"
+      run: go.sh
+      shell: bash
