@@ -18,4 +18,4 @@ jobs:
         shell: bash
         run: |
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
-          ./go.sh ${{ vars.GO_TEST_ARCH }}
+          sudo ./go.sh ${{ vars.GO_TEST_ARCH }}
