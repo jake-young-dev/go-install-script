@@ -16,4 +16,4 @@ Benchmarks are pulled using git action runner timestamps and includes the teardo
 This repo is a as brain-dead as I could make it and can only pull a single linux release for now. The code is loosely based off of the go tool script from [catthehacker](https://github.com/catthehacker/docker_images/blob/master/linux/ubuntu/scripts/go.sh). I am not very experienced in bash so if you have any improvements, recommendations, or bug fixes please open an issue.
 
 # Testing
-A simple testing job is triggered on a push to any branch, the job will create a mock go.mod file to ensure that one is present in testing container
+A simple testing job is triggered on a push to the master branch, the job will create a mock go.mod file to ensure that one is present in testing container

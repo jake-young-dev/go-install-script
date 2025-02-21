@@ -25,7 +25,7 @@ echo "Creating GOPATH directories"
 # -v prints out each dir created
 # -m set chmod value for created dirs
 # -p create parent dirs as needed without errors
-mkdir -v -m 0777 -p "$GOPATH"
+sudo mkdir -v -m 0777 -p "$GOPATH"
 
 #download and extract go files
 echo "Downloading go files for ${DL_VERSION} with ${DL_ARCH}"
@@ -39,7 +39,7 @@ echo "Downloading go files for ${DL_VERSION} with ${DL_ARCH}"
 # - extract from pipe as a file
 # --strip-components=1 strip first leading component from file name on extraction
 # -C change to GOPATH directory
-if wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | tar -zxf - --strip-components=1 -C "$GOPATH"; then
+if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - --strip-components=1 -C "$GOPATH"; then
   echo "Downloaded go files"
 else
   echo "FATAL: Unable to download and extract go files"
@@ -56,7 +56,7 @@ fi
 
 #link bin directories for system command
 echo "Creating symbolic link for go command"
-ln -s "$GOPATH/bin"/* /usr/bin
+sudo ln -s "$GOPATH/bin"/* /usr/bin
 
 #check for go version
 if OUTPUT=$(go version); then

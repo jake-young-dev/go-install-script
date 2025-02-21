@@ -1,8 +1,8 @@
-name: 'go-install-script'
-description: 'quick and dirty install golang for linux workflows'
+name: "go-install-script"
+description: "quick and dirty install for golang on linux workflows"
 inputs:
-  architecture:  # id of input
-    description: 'linux architecture to use for Go files'
+  architecture:
+    description: "linux architecture to use for Go files (e.g. amd64)"
     required: true
 runs:
   using: composite
