@@ -2,7 +2,7 @@ name: "go-install-test"
 run-name: "go-install-test"
 on:
   push:
-    branches: fix/versioncheck
+    branches: master
 
 jobs:
   test:
@@ -14,7 +14,7 @@ jobs:
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
 
       - name: "run go script"
-        uses: jake-young-dev/go-install-script@fix/versioncheck
+        uses: jake-young-dev/go-install-script@master
         with:
           architecture: amd64
           overwrite: yes
