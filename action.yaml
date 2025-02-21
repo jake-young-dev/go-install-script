@@ -3,10 +3,6 @@ description: 'Quickly install golang for linux workflows'
 runs:
   using: composite
   steps:
-    - name: im dum
-      run: ls
-      shell: bash
-
     - name: "run script"
       run: ./go.sh
       shell: bash
