@@ -8,5 +8,5 @@ runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh $${{ inputs.architecture }}
+      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }}
       shell: bash
