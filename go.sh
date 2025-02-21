@@ -18,10 +18,17 @@ DL_ARCH=$1
 DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
 
+#check if go is already present before starting install process
 GO_CHECK=$(go version)
 if [[ "$GO_CHECK" ]]; then
-  echo "FATAL: Go version {$GO_CHECK} already installed"
-  exit 1
+  #if overwrite flag is set remove old go files
+  if [[ "$2" == "yes" ]]; then
+    sudo rm -r /usr/bin/go 
+    sudo rm -r /usr/bin/gofmt
+  else
+    echo "FATAL: Go version {$GO_CHECK} already installed, set overwrite to 'yes' if you wish to update installed version"
+    exit 1
+  fi
 fi
 
 #handle go path
