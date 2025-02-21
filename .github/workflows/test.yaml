@@ -1,0 +1,20 @@
+name: "go-install-test"
+run-name: "go-install-test"
+on:
+  push:
+    branches: master
+
+jobs:
+  test:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: "checkout files"
+        uses: actions/checkout@v4
+        sparse_checkout: |
+          go.sh
+      
+      - name: "run install script"
+        shell: bash
+        run: |
+          echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
+          ./go.sh ${{ vars.GO_TEST_ARCH }}
