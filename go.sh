@@ -59,7 +59,7 @@ echo "Creating symbolic link for go command"
 ln -s "$GOPATH/bin"/* /usr/bin
 
 #check for go version
-if OUTPUT=$("go" version); then
+if OUTPUT=$(go version); then
   echo "Command setup successful for: {$OUTPUT}"
 else
   echo "FATAL: Failed to create link for go command"
