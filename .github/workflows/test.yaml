@@ -10,8 +10,9 @@ jobs:
     steps:
       - name: "checkout files"
         uses: actions/checkout@v4
-        sparse_checkout: |
-          go.sh
+        with:
+          sparse_checkout: |
+            go.sh
       
       - name: "run install script"
         shell: bash
