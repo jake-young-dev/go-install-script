@@ -19,5 +19,5 @@ jobs:
       - name: "run go install script"
         uses: jake-young-dev/go-install-script@fix/input-vali
         with:
-          #architecture: amd64 -- forcing a fail
+          architecture: amd64
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
