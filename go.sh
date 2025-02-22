@@ -4,11 +4,8 @@ echo "Starting Golang install"
 
 #validate version and architecture
 echo "Finding go version"
-#finding go version number in go.mod file
-#TODO: there is a small bug where if you use a "stable" go tag like 1.24 this fails
-#FIX: attempting to grab go x.xx instead since it should still catch three pieces
-#FIX: have to remove -o if we go that route
-#ISSUE: go file links have .0 at the end for stable links, we need to append that .0 if we don't find it
+#looking for go version in go.mod file, only checking up to minor version ignoring patch value to allow for stable versions
+# -P uses perl syntax
 DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+" go.mod -P)"
 if [[ -z "$DL_VERSION_RAW" ]]; then
   echo "FATAL: Unable to pull version from go.mod"
@@ -22,7 +19,8 @@ fi
 DL_ARCH=$1
 DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
-#FIX: here we have 1.25.5 or 1.23 for example
+#ensure we have patch-level version, if not add 0 for stable releases
+# -P uses perl syntax
 DL_VERSION_PAD_CHECK="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -P)"
 if [[ -z "$DL_VERSION_PAD_CHECK" ]]; then
   DL_VERSION="$DL_VERSION"".0"
