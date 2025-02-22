@@ -14,7 +14,7 @@ jobs:
       - name: "setup mock go.mod file"
         shell: bash
         run: |
-          echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
+          echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23" > go.mod
 
       - name: "run go install script"
         uses: jake-young-dev/go-install-script@fix/version-parsing
