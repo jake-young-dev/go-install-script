@@ -19,7 +19,7 @@ DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
 
 #check if go is already present before starting install process
-GO_CHECK=$(go version)
+GO_CHECK=$(command -v go)
 if [[ "$GO_CHECK" ]]; then
   #if overwrite flag is set remove old go files
   if [[ "$2" == "yes" ]]; then
