@@ -5,7 +5,9 @@ echo "Starting Golang install"
 #validate version and architecture
 echo "Finding go version"
 #finding go version number in go.mod file
-DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -oP)"
+#TODO: there is a small bug where if you use a "stable" go tag like 1.24 this fails
+#FIX: attempting to grab go x.xx instead since it should still catch three pieces
+DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+" go.mod -oP)"
 if [[ -z "$DL_VERSION_RAW" ]]; then
   echo "FATAL: Unable to pull version from go.mod"
   exit 1
