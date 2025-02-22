@@ -1,5 +1,5 @@
-name: "go-install-test"
-run-name: "go-install-test"
+name: "tests"
+run-name: "tests"
 on:
   push:
     branches: master
