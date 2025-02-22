@@ -3,7 +3,9 @@ run-name: "tests"
 on:
   push:
     branches: master
-    paths: go.sh
+    paths: 
+      - go.sh
+      - action.yaml
 
 jobs:
   test:
@@ -18,4 +20,4 @@ jobs:
         uses: jake-young-dev/go-install-script@master
         with:
           architecture: amd64
-          overwrite: yes #removes old go versions if present (github hosted runners come preloaded with go)
+          purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
