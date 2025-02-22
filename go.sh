@@ -12,7 +12,7 @@ if [[ -z "$DL_VERSION_RAW" ]]; then
   exit 1
 fi
 echo "Found go version: ${DL_VERSION_RAW}"
-if [[ -z "$1" ]]; then
+if [[ "$1" == "." ]]; then
   echo "FATAL: Missing required Linux archictecture parameter"
   exit 1
 fi
@@ -36,7 +36,7 @@ if [[ "$GO_CHECK" ]]; then
     sudo rm -r /usr/bin/go 
     sudo rm -r /usr/bin/gofmt
   else
-    echo "FATAL: Go version {$GO_CHECK} already installed, set overwrite to 'yes' if you wish to update installed version"
+    echo "FATAL: Go version {$GO_CHECK} already installed, set purge to 'yes' if you wish to update installed version"
     exit 1
   fi
 fi

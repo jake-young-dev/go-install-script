@@ -2,7 +2,7 @@ name: "tests"
 run-name: "tests"
 on:
   push:
-    branches: master
+    branches: fix/input-vali
     paths: 
       - go.sh
       - action.yaml
@@ -17,7 +17,7 @@ jobs:
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23" > go.mod
 
       - name: "run go install script"
-        uses: jake-young-dev/go-install-script@master
+        uses: jake-young-dev/go-install-script@fix/input-vali
         with:
-          architecture: amd64
+          #architecture: amd64 -- forcing a fail
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)

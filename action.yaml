@@ -4,6 +4,7 @@ inputs:
   architecture:
     description: "linux architecture to use for Go files (e.g. amd64)"
     required: true
+    default: "."
   purge:
     description: "delete any previously installed go versions"
     required: false
