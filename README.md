@@ -15,7 +15,7 @@ Benchmarks are pulled using git action runner timestamps and includes the teardo
 <br />
 
 # Example Usage
-The workflow file contains a good [example](https://github.com/jake-young-dev/go-install-script/blob/master/.github/workflows/test.yaml#L16), I recommend using a tagged release to avoid unexpected changes that may come to the master branch.
+The workflow file contains a good [example](https://github.com/jake-young-dev/go-install-script/blob/master/.github/workflows/test.yaml#L17), I recommend using a tagged release to avoid unexpected changes that may come to the master branch.
 
 <br />
 
