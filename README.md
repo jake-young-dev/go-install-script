@@ -1,4 +1,5 @@
 # go-install-script
+[![tests](https://github.com/jake-young-dev/go-install-script/actions/workflows/test.yaml/badge.svg?branch=master)](https://github.com/jake-young-dev/go-install-script/actions/workflows/test.yaml)
 A simple, hacky script to install Golang for action workflows. This provides the ability to install and setup golang without node/typescript which is required when using [actions/setup-go](https://github.com/actions/setup-go). Golang files are pulled directly from the go download [site](https://go.dev/dl/) and are based on the go version in the go.mod file in the root of the project. The architecture string must be supplied as a command-line argument for the script (e.g ./go.sh amd64)
 
 <br />
