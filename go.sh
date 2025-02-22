@@ -12,6 +12,7 @@ if [[ -z "$DL_VERSION_RAW" ]]; then
   exit 1
 fi
 echo "Found go version: ${DL_VERSION_RAW}"
+#"." is default arch value meaning required field was not set
 if [[ "$1" == "." ]]; then
   echo "FATAL: Missing required Linux archictecture parameter"
   exit 1
