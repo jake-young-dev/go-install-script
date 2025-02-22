@@ -8,12 +8,12 @@ jobs:
   test:
     runs-on: [ubuntu-22.04]
     steps:
-      - name: "setup env and remove cached go"
+      - name: "setup mock go.mod file"
         shell: bash
         run: |
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
 
-      - name: "run go script"
+      - name: "run go install script"
         uses: jake-young-dev/go-install-script@master
         with:
           architecture: amd64
