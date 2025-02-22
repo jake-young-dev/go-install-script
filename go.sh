@@ -4,6 +4,7 @@ echo "Starting Golang install"
 
 #validate version and architecture
 echo "Finding go version"
+#finding go version number in go.mod file
 DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -oP)"
 if [[ -z "$DL_VERSION_RAW" ]]; then
   echo "FATAL: Unable to pull version from go.mod"
@@ -19,6 +20,7 @@ DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
 
 #check if go is already present before starting install process
+# -v writes string that indicates command or command path to output, prevents command not found error
 GO_CHECK=$(command -v go)
 if [[ "$GO_CHECK" ]]; then
   #if overwrite flag is set remove old go files

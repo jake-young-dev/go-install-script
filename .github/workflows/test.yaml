@@ -2,8 +2,10 @@ name: "tests"
 run-name: "tests"
 on:
   push:
-    branches: master
-    paths: go.sh
+    branches: new/inputs
+    paths: 
+      - go.sh
+      - action.yaml
 
 jobs:
   test:
@@ -15,7 +17,7 @@ jobs:
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.23.5" > go.mod
 
       - name: "run go install script"
-        uses: jake-young-dev/go-install-script@master
+        uses: jake-young-dev/go-install-script@new/inputs
         with:
           architecture: amd64
-          overwrite: yes #removes old go versions if present (github hosted runners come preloaded with go)
+          purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
