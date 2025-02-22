@@ -7,7 +7,9 @@ echo "Finding go version"
 #finding go version number in go.mod file
 #TODO: there is a small bug where if you use a "stable" go tag like 1.24 this fails
 #FIX: attempting to grab go x.xx instead since it should still catch three pieces
-DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+" go.mod -oP)"
+#FIX: have to remove -o if we go that route
+#ISSUE: go file links have .0 at the end for stable links, we need to append that .0 if we don't find it
+DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+" go.mod -P)"
 if [[ -z "$DL_VERSION_RAW" ]]; then
   echo "FATAL: Unable to pull version from go.mod"
   exit 1
@@ -20,6 +22,12 @@ fi
 DL_ARCH=$1
 DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
+#FIX: here we have 1.25.5 or 1.23 for example
+DL_VERSION_PAD_CHECK="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -P)"
+if [[ -z "$DL_VERSION_PAD_CHECK" ]]; then
+  DL_VERSION="$DL_VERSION"".0"
+  echo "Fixing version number to ${DL_VERSION}"
+fi
 
 #check if go is already present before starting install process
 # -v writes string that indicates command or command path to output, prevents command not found error
