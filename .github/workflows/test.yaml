@@ -6,7 +6,7 @@ on:
     paths: 
       - go.sh
       - action.yaml
-      - .gitea/test.yaml #changing pipeline triggers run
+      - .github/test.yaml #changing pipeline triggers run
 
 jobs:
   test:
