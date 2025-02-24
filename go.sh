@@ -79,8 +79,12 @@ fi
 
 ls -la
 
-ls ${ACT_TOOLSDIRECTORY} -la
-ls /usr/bin -l
+go install golang.org/dl/go1.22.1@latest
+
+go1.22.1 version
+
+ls ${ACT_TOOLSDIRECTORY}/go -la
+ls /usr/bin/go -l
 
 #link bin directories for system command
 # -s symbolic link
