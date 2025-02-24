@@ -9,9 +9,13 @@ inputs:
     description: "delete any previously installed go versions"
     required: false
     default: "no"
+  extra:
+    description: "testing multiple go versions"
+    required: false
+    default: "."
 runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }}
+      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }} ${{ inputs.extra }}
       shell: bash

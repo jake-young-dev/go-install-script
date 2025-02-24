@@ -75,9 +75,6 @@ fi
 echo "Creating symbolic link for go command"
 sudo ln -s "$GOPATH/bin"/* /usr/bin
 
-go version
-node --version
-
 #grab installed go version
 DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
 if [[ -z "$DL_GO_CMD_VERSION" ]]; then
@@ -103,3 +100,14 @@ else
 fi
 
 echo "Golang successfully installed"
+
+echo "Grabbing 'extra' versions"
+#required for tests, will be optional in production
+if [[ "$2" == "." ]]; then
+  echo "FATAL: Missing required Linux archictecture parameter"
+  exit 1
+fi
+
+TESTINGINPUT="$2"
+go install golang.org/dl/go${TESTINGINPUT}@latest
+go${TESTINGINPUT} download
