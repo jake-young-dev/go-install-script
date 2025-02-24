@@ -67,7 +67,8 @@ else
 fi
 
 echo "Moving go files" # keep linking for caching
-sudo ln -s "${GO_PATH}"/* /usr/local/go
+sudo ln -s "${GO_PATH}/${DL_VERSION}/${DL_ARCH}/bin/*" /usr/local/go/bin
+# sudo ln -s "${GO_PATH}"/* /usr/local/go
 
 GLOBAL_GO_CMD_VERSION=$(go version)
 if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
