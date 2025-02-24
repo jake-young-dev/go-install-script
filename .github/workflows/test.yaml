@@ -6,7 +6,7 @@ on:
     paths: 
       - go.sh
       - action.yaml
-      - .github/test.yaml #changing pipeline triggers run
+      - .github/workflows/test.yaml #changing pipeline triggers run
 
 jobs:
   test:
