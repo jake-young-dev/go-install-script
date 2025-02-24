@@ -109,5 +109,11 @@ if [[ "$2" == "." ]]; then
 fi
 
 TESTINGINPUT="$2"
-go install golang.org/dl/go${TESTINGINPUT}@latest
-go${TESTINGINPUT} download
+
+echo "$TESTINGINPUT"
+E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
+echo "$E_DL"
+F_DL="go${TESTINGINPUT} download"
+echo "$F_DL"
+# go install golang.org/dl/go${TESTINGINPUT}@latest
+# go${TESTINGINPUT} download
