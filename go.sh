@@ -81,8 +81,10 @@ ls -la
 
 #link bin directories for system command
 # -s symbolic link
-echo "Creating symbolic link for go command"
-sudo ln -s "$GOPATH/bin"/* /usr/bin
+# echo "Creating symbolic link for go command"
+# sudo ln -s "$GOPATH/bin"/* /usr/bin
+echo "Moving go files"
+sudo mv "${ACT_TOOLSDIRECTORY}/go/"/* /usr/bin/go
 
 #grab installed go version
 DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
@@ -110,10 +112,10 @@ fi
 
 echo "Golang successfully installed"
 
-go install golang.org/dl/go1.22.1@latest
+# go install golang.org/dl/go1.22.1@latest
 
-go1.22.1 download
-go1.22.1 version
+# go1.22.1 download
+# go1.22.1 version
 
-ls ${ACT_TOOLSDIRECTORY}/go -la
-ls /usr/bin/go -l
+# ls ${ACT_TOOLSDIRECTORY}/go -la
+# ls /usr/bin/go -l
