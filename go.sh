@@ -109,11 +109,15 @@ if [[ "$3" == "." ]]; then
 fi
 
 TESTINGINPUT="$3"
+ls /usr/local/go/bin
 
 echo "$TESTINGINPUT"
 E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
 echo "$E_DL"
 go install "$E_DL"
-F_DL="go${TESTINGINPUT} download"
+
+ls /usr/local/go/bin
+
+F_DL="go${TESTINGINPUT}"
 echo "$F_DL"
 "$F_DL" download
