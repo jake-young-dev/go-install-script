@@ -54,7 +54,7 @@ echo "Creating GOPATH directories"
 
 GOPATH="${ACT_TOOLSDIRECTORY}/go"
 sudo mkdir -v -m 0777 -p "$GOPATH"
-sudo mkdir -v -m 0777 -p /usr/local/go
+sudo mkdir -v -m 0777 -p /usr/bin/go
 
 echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 
@@ -73,7 +73,7 @@ ls ${GOPATH}
 # sudo ln -s "${GO_PATH}"/* /usr/local/go
 echo "Testing here"
 # export PATH="$GOPATH/bin:$PATH"
-sudo ln -s "${GO_PATH}/go"/* /usr/local/go
+sudo ln -s "${GO_PATH}/go"/* /usr/bin/go
 go version
 
 GLOBAL_GO_CMD_VERSION=$(go version)
