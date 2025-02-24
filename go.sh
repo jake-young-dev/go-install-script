@@ -49,17 +49,42 @@ if [[ "$GO_CHECK" ]]; then
   fi
 fi
 
-#handle go path
-GOPATH="${ACT_TOOLSDIRECTORY}/go/${DL_VERSION}/${DL_ARCH}"
+#starting new work here
 echo "Creating GOPATH directories"
+
+GOPATH="${ACT_TOOLSDIRECTORY}/go"
+sudo mkdir -v -m 0777 -p "$GOPATH"
+
+echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
+
+#no longer stripping path
+if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - -C "$GOPATH"; then
+  echo "Downloaded go files"
+else
+  echo "FATAL: Unable to download and extract go files"
+  exit 1
+fi
+
+echo "Moving go files" # keep linking for caching
+sudo ln -s "${GO_PATH}"/* /usr/local/go
+
+GLOBAL_GO_CMD_VERSION=$(go version)
+if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
+  echo "FATAL: Failed to register go command"
+  exit 1
+fi
+
+#handle go path
+# GOPATH="${ACT_TOOLSDIRECTORY}/go/${DL_VERSION}/${DL_ARCH}"
+# echo "Creating GOPATH directories"
 #create go DIRs
 # -v prints out each dir created
 # -m set chmod value for created dirs
 # -p create parent dirs as needed without errors
-sudo mkdir -v -m 0777 -p "$GOPATH"
+# sudo mkdir -v -m 0777 -p "$GOPATH"
 
 #download and extract go files
-echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
+# echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 #wget
 # -q quiets output
 # O- outputs file data to pipe instead of file
@@ -70,47 +95,47 @@ echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 # - extract from pipe as a file
 # --strip-components=1 strip first leading component from file name on extraction
 # -C change to GOPATH directory
-if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - --strip-components=1 -C "$GOPATH"; then
-  echo "Downloaded go files"
-else
-  echo "FATAL: Unable to download and extract go files"
-  exit 1
-fi
+# if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - --strip-components=1 -C "$GOPATH"; then
+#   echo "Downloaded go files"
+# else
+#   echo "FATAL: Unable to download and extract go files"
+#   exit 1
+# fi
 
-ls -la
+# ls -la
 
 #link bin directories for system command
 # -s symbolic link
 # echo "Creating symbolic link for go command"
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
-echo "Moving go files"
-sudo ln -s "$GOPATH/bin/go"/* /usr/bin/go
+# echo "Moving go files"
+# sudo ln -s "${ACT_TOOLSDIRECTORY}/go"/* /usr/bin/go
 # sudo cp -r "${ACT_TOOLSDIRECTORY}/go"/* /usr/bin/go
 # sudo mv "${ACT_TOOLSDIRECTORY}/go/"/* /usr/bin/go
 
 #grab installed go version
-DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
-if [[ -z "$DL_GO_CMD_VERSION" ]]; then
-  echo "FATAL: Failed to install go files"
-  exit 1
-else
-  echo "Go setup for {$DL_GO_CMD_VERSION}"
-fi
+# DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
+# if [[ -z "$DL_GO_CMD_VERSION" ]]; then
+#   echo "FATAL: Failed to install go files"
+#   exit 1
+# else
+#   echo "Go setup for {$DL_GO_CMD_VERSION}"
+# fi
 
-#grab go version using go command
-GLOBAL_GO_CMD_VERSION=$(go version)
-if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
-  echo "FATAL: Failed to register go command"
-  exit 1
-fi
+# #grab go version using go command
+# GLOBAL_GO_CMD_VERSION=$(go version)
+# if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
+#   echo "FATAL: Failed to register go command"
+#   exit 1
+# fi
 
-#ensure global go version matches the requested installed version
-if [[ "$DL_GO_CMD_VERSION" == "$GLOBAL_GO_CMD_VERSION" ]]; then
-  echo "Go command successfully setup for: {$GLOBAL_GO_CMD_VERSION}"
-else
-  echo "FATAL: Global go version does not match installed version, is go already installed?"
-  exit 1
-fi
+# #ensure global go version matches the requested installed version
+# if [[ "$DL_GO_CMD_VERSION" == "$GLOBAL_GO_CMD_VERSION" ]]; then
+#   echo "Go command successfully setup for: {$GLOBAL_GO_CMD_VERSION}"
+# else
+#   echo "FATAL: Global go version does not match installed version, is go already installed?"
+#   exit 1
+# fi
 
 echo "Golang successfully installed"
 
