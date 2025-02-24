@@ -1,20 +1,25 @@
 #!/bin/bash
 
+#todo:
+# remove downloaded file after install
+# remove sym link and actually move the files to /usr/bin
+# move to using go to install MORE go versions and allow for many
+
 echo "Starting Golang install"
 
 #validate version and architecture
 echo "Finding go version"
-#looking for go version in go.mod file, only checking up to minor version ignoring patch value to allow for stable versions
+#looking for go version in go.mod file, only checking up to minor version ignoring patch value to allow for stable versions like 1.24
 # -P uses perl syntax
 DL_VERSION_RAW="$(grep "^go [0-9]+.[0-9]+" go.mod -P)"
 if [[ -z "$DL_VERSION_RAW" ]]; then
-  echo "FATAL: Unable to pull version from go.mod"
+  echo "FATAL: Unable to pull go version from go.mod"
   exit 1
 fi
 echo "Found go version: ${DL_VERSION_RAW}"
 #"." is default arch value meaning required field was not set
 if [[ "$1" == "." ]]; then
-  echo "FATAL: Missing required Linux archictecture parameter"
+  echo "FATAL: Missing archictecture parameter"
   exit 1
 fi
 DL_ARCH=$1
@@ -25,19 +30,21 @@ DL_VERSION="${DL_VSPL[1]}"
 DL_VERSION_PAD_CHECK="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -P)"
 if [[ -z "$DL_VERSION_PAD_CHECK" ]]; then
   DL_VERSION="$DL_VERSION"".0"
-  echo "Fixing version number to ${DL_VERSION}"
+  echo "Fixing version number to: ${DL_VERSION}"
 fi
 
-#check if go is already present before starting install process
-# -v writes string that indicates command or command path to output, prevents command not found error
+#check if go is already present before starting install process, if purge input is set to "yes" we remove them, otherwise
+#a fatal error is thrown
+# -v writes string that indicates command or command path to output, prevents command not found error from using go version
 GO_CHECK=$(command -v go)
 if [[ "$GO_CHECK" ]]; then
   #if overwrite flag is set remove old go files
   if [[ "$2" == "yes" ]]; then
+    echo "Removing previous go version {$GO_CHECK}"
     sudo rm -r /usr/bin/go 
     sudo rm -r /usr/bin/gofmt
   else
-    echo "FATAL: Go version {$GO_CHECK} already installed, set purge to 'yes' if you wish to update installed version"
+    echo "FATAL: Go version {$GO_CHECK} already installed, set purge input to 'yes' to remove {$GO_CHECK} and install {$DL_VERSION}"
     exit 1
   fi
 fi
@@ -52,7 +59,7 @@ echo "Creating GOPATH directories"
 sudo mkdir -v -m 0777 -p "$GOPATH"
 
 #download and extract go files
-echo "Downloading go files for ${DL_VERSION} with ${DL_ARCH}"
+echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 #wget
 # -q quiets output
 # O- outputs file data to pipe instead of file
@@ -69,6 +76,8 @@ else
   echo "FATAL: Unable to download and extract go files"
   exit 1
 fi
+
+ls -la
 
 #link bin directories for system command
 # -s symbolic link
@@ -100,3 +109,5 @@ else
 fi
 
 echo "Golang successfully installed"
+
+ls -la
