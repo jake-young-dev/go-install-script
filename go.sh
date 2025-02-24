@@ -112,6 +112,7 @@ echo "Golang successfully installed"
 
 go install golang.org/dl/go1.22.1@latest
 
+go1.22.1 download
 go1.22.1 version
 
 ls ${ACT_TOOLSDIRECTORY}/go -la
