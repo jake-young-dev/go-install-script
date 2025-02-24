@@ -25,8 +25,8 @@ jobs:
 
       - name: "check go version"
         shell: bash
-        run: go version | grep "go version go1.23.0 linux/amd64"
+        run: go version | grep "go version go1.24 linux/amd64"
 
       - name: "check go version, should fail"
         shell: bash
-        run: go version | grep "go version go1.20.0 linux/amd64"
+        run: go version | grep "go version go1.23.0 linux/amd64"
