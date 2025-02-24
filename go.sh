@@ -76,7 +76,7 @@ echo "Creating symbolic link for go command"
 sudo ln -s "$GOPATH/bin"/* /usr/bin
 
 go version
-node version
+node --version
 
 #grab installed go version
 DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
