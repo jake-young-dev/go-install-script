@@ -67,12 +67,13 @@ else
 fi
 
 ls ${GOPATH}
+ls ${GOPATH}/go
 
 # echo "Moving go files" # keep linking for caching
 # sudo ln -s "${GO_PATH}/${DL_VERSION}/${DL_ARCH}/bin/*" /usr/bin
 # sudo ln -s "${GO_PATH}"/* /usr/local/go
 echo "Testing here"
-export GOPATH=${GOPATH}
+export PATH="$GOPATH/bin:$PATH"
 
 GLOBAL_GO_CMD_VERSION=$(go version)
 if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
