@@ -116,7 +116,10 @@ E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
 echo "$E_DL"
 go install "$E_DL"
 
+sudo ln -s "$GOPATH/go${TESTINGINPUT}/bin"/* /usr/bin
 ls "$GOPATH"
+
+go version
 
 F_DL="go${TESTINGINPUT}"
 echo "$F_DL"
