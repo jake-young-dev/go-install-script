@@ -84,7 +84,8 @@ ls -la
 # echo "Creating symbolic link for go command"
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 echo "Moving go files"
-sudo mv "${ACT_TOOLSDIRECTORY}/go/"/* /usr/bin/go
+sudo cp "${ACT_TOOLSDIRECTORY}/go/"/* /usr/bin/go
+# sudo mv "${ACT_TOOLSDIRECTORY}/go/"/* /usr/bin/go
 
 #grab installed go version
 DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
