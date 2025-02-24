@@ -59,7 +59,7 @@ sudo mkdir -v -m 0777 -p "$GOPATH"
 echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 
 #no longer stripping path
-if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - -C "$GOPATH"; then
+if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - --strip-components=1 -C "$GOPATH"; then
   echo "Downloaded go files"
 else
   echo "FATAL: Unable to download and extract go files"
