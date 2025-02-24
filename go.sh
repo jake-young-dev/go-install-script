@@ -67,7 +67,6 @@ else
 fi
 
 ls ${GOPATH}
-ls ${GOPATH}/go
 
 # echo "Moving go files" # keep linking for caching
 # sudo ln -s "${GO_PATH}/${DL_VERSION}/${DL_ARCH}/bin/*" /usr/bin
