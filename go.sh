@@ -73,8 +73,9 @@ ls ${GOPATH}
 # sudo ln -s "${GO_PATH}"/* /usr/local/go
 echo "Testing here"
 # export PATH="$GOPATH/bin:$PATH"
-sudo ln -s "${GO_PATH}/go"/* /usr/bin/go
+sudo ln -s "${GOPATH}"/* /usr/bin/go
 go version
+
 
 GLOBAL_GO_CMD_VERSION=$(go version)
 if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
