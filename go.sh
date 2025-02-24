@@ -79,6 +79,8 @@ fi
 
 ls -la
 
+ls ${ACT_TOOLSDIRECTORY} -la
+
 #link bin directories for system command
 # -s symbolic link
 echo "Creating symbolic link for go command"
