@@ -54,6 +54,7 @@ echo "Creating GOPATH directories"
 
 GOPATH="${ACT_TOOLSDIRECTORY}/go"
 sudo mkdir -v -m 0777 -p "$GOPATH"
+sudo mkdir -v -m 0777 -p /usr/local/go
 
 echo "Downloading go files for ${DL_VERSION} ${DL_ARCH}"
 
