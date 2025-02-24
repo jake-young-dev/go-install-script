@@ -79,13 +79,6 @@ fi
 
 ls -la
 
-go install golang.org/dl/go1.22.1@latest
-
-go1.22.1 version
-
-ls ${ACT_TOOLSDIRECTORY}/go -la
-ls /usr/bin/go -l
-
 #link bin directories for system command
 # -s symbolic link
 echo "Creating symbolic link for go command"
@@ -117,4 +110,9 @@ fi
 
 echo "Golang successfully installed"
 
-ls -la
+go install golang.org/dl/go1.22.1@latest
+
+go1.22.1 version
+
+ls ${ACT_TOOLSDIRECTORY}/go -la
+ls /usr/bin/go -l
