@@ -113,7 +113,9 @@ TESTINGINPUT="$3"
 echo "$TESTINGINPUT"
 E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
 echo "$E_DL"
+go install ${E_DL}
 F_DL="go${TESTINGINPUT} download"
 echo "$F_DL"
+${F_DL} download
 # go install golang.org/dl/go${TESTINGINPUT}@latest
 # go${TESTINGINPUT} download
