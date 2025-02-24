@@ -103,12 +103,12 @@ echo "Golang successfully installed"
 
 echo "Grabbing 'extra' versions"
 #required for tests, will be optional in production
-if [[ "$2" == "." ]]; then
+if [[ "$3" == "." ]]; then
   echo "FATAL: Missing required Linux archictecture parameter"
   exit 1
 fi
 
-TESTINGINPUT="$2"
+TESTINGINPUT="$3"
 
 echo "$TESTINGINPUT"
 E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
