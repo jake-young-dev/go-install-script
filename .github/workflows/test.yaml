@@ -6,6 +6,7 @@ on:
     paths: 
       - go.sh
       - action.yaml
+      - .gitea/test.yaml #changing pipeline triggers run
 
 jobs:
   test:
@@ -21,3 +22,7 @@ jobs:
         with:
           architecture: amd64
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
+
+      - name: "check go version"
+        shell: bash
+        run: go version
