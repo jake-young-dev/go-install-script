@@ -80,6 +80,7 @@ fi
 ls -la
 
 ls ${ACT_TOOLSDIRECTORY} -la
+ls /usr/bin -l
 
 #link bin directories for system command
 # -s symbolic link
