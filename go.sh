@@ -127,6 +127,7 @@ for in in "${INPUT_ARR[@]}"; do
   GOBIN="$GB" go${in} download
 done
 
+GOBIN="$GB" go1.22.2 version
 go1.22.2 version
 
 # sudo mkdir -v -m 0777 -p "$HOME/go/bin"
