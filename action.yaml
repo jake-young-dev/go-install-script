@@ -13,6 +13,7 @@ inputs:
     description: "used to pull extra go versions besides just that listed in the go.mod file"
     required: false
     default: "."
+    type: string
 runs:
   using: composite
   steps:
