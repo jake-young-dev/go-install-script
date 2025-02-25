@@ -118,8 +118,12 @@ go install "$E_DL"
 
 # sudo ln -s "${ACT_TOOLSDIRECTORY}/go$TESTINGINPUT/bin"/* /usr/bin
 ls "$ACT_TOOLSDIRECTORY"
+echo "--"
 ls "$ACT_TOOLSDIRECTORY/go"
-ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION"
+echo "--"
+ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
+echo "--"
+ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 
 go version
 
