@@ -113,6 +113,7 @@ echo "$INPUTS"
 echo "-----"
 for i in "$INPUTS" ; do
     echo "$i"
+    echo "-"
 done
 
 # this works but needs cleanup
