@@ -108,7 +108,7 @@ if [[ "$3" == "." ]]; then
   exit 1
 fi
 
-echo "$3"
+# echo "$3"
 echo "$INPUTS"
 
 # this works but needs cleanup
