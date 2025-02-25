@@ -105,15 +105,16 @@ echo "Go version ${DL_VERSION} installed"
 echo "Installing extra go versions from 'versions' input"
 
 INPUT_ARR=( $INPUT_VERSIONS )
-for i in "${INPUT_ARR[@]}" ; do
-    echo "Downloading and installing go version ${i}"
+for i in "${INPUT_ARR[@]}"; do
+    echo "Installing go version ${i}"
     go install golang.org/dl/go${i}@latest
 done
 
 sudo ln -s "$HOME/go/bin"/* /usr/bin
 
-for i in "${INPUT_ARR[@]}" ; do
-  go${i} download
+for in in "${INPUT_ARR[@]}"; do
+  echo "Downloading go version ${in}"
+  go${in} download
 done
 
 # this works but needs cleanup
