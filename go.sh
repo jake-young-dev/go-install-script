@@ -101,8 +101,12 @@ fi
 
 echo "Go version ${DL_VERSION} installed"
 
-# installing any extra go versions with go itself
 echo "Installing extra go versions from 'versions' input"
+
+GB="${ACT_TOOLSDIRECTORY}/go-cmds/bin"
+sudo mkdir -v -m 0777 -p "$GB"
+export GOBIN="$GB"
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 INPUT_ARR=( $INPUT_VERSIONS )
 for i in "${INPUT_ARR[@]}"; do
@@ -110,26 +114,34 @@ for i in "${INPUT_ARR[@]}"; do
     go install golang.org/dl/go${i}@latest
 done
 
-sudo ln -s "$HOME/go/bin"/* /usr/bin
+# sudo ln -s "$HOME/go/bin"/* /usr/bin
+# sudo mkdir -v -m 0777 -p "$GOPATH"
+#ACT_TOOLSDIRECTORY
+#sudo mv "$HOME/go/bin"/* 
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
   go${in} download
 done
 
-# this works but needs cleanup
-# TESTINGINPUT="$3"
-# ls "$GOPATH"
+#WORKING
+# installing any extra go versions with go itself
+# echo "Installing extra go versions from 'versions' input"
 
-# echo "$TESTINGINPUT"
-# E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
-# echo "$E_DL"
-# go install "$E_DL"
+# INPUT_ARR=( $INPUT_VERSIONS )
+# for i in "${INPUT_ARR[@]}"; do
+#     echo "Installing go version ${i}"
+#     go install golang.org/dl/go${i}@latest
+# done
 
 # sudo ln -s "$HOME/go/bin"/* /usr/bin
 
-# F_DL="go${TESTINGINPUT}"
-# echo "$F_DL"
-# "$F_DL" download
+# for in in "${INPUT_ARR[@]}"; do
+#   echo "Downloading go version ${in}"
+#   go${in} download
+# done
 
-# go version
+# this does work, but has some weird errors when I use the pipeline. I don't think the goX.X.X commands persist between jobs and I think we would need to move
+# the go files into the ACT dir and the link that to bin to persist them.
+
+# then we need to research how to cache these files
