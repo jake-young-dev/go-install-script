@@ -105,7 +105,6 @@ echo "Installing extra go versions from 'versions' input"
 
 GB="${ACT_TOOLSDIRECTORY}/go-cmds/bin"
 sudo mkdir -v -m 0777 -p "$GB"
-# export GOBIN="$GB"
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 INPUT_ARR=( $INPUT_VERSIONS )
@@ -114,22 +113,27 @@ for i in "${INPUT_ARR[@]}"; do
     GOBIN="$GB" go install golang.org/dl/go${i}@latest
 done
 
-# sudo ln -s "$HOME/go/bin"/* /usr/bin
-# sudo mkdir -v -m 0777 -p "$GOPATH"
-#ACT_TOOLSDIRECTORY
-#sudo mv "$HOME/go/bin"/* 
-# sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+# this is interesting and so far from good code that it's probably a sin, so that means its between me and
+# god so I don't need it from you. Unless you know what I'm doing wrong, then please help me.
 
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
+# sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
+
+sudo mkdir -v -m 0777 -p "$HOME/go/bin"
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+sudo ln -s "$HOME/go/bin"/* /usr/bin
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
   GOBIN="$GB" go${in} download
 done
 
-sudo mkdir -v -m 0777 -p "$HOME/go/bin"
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
-sudo ln -s "$HOME/go/bin"/* /usr/bin
+# sudo mkdir -v -m 0777 -p "$HOME/go/bin"
+# sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+
+# so this "works" but the step after this job, running go1.22.2 version somehow "installs" go 1.23.5 (the base version) so
+# it doesn't fail but isn't correct. I cannot figure this out for the life of me
+
+# sudo ln -s "$HOME/go/bin"/* /usr/bin #this didn't work obv
 
 #WORKING
 # installing any extra go versions with go itself
