@@ -117,6 +117,10 @@ done
 # this is interesting and so far from good code that it's probably a sin, so that means its between me and
 # god so I don't need it from you. Unless you know what I'm doing wrong, then please help me.
 
+
+
+
+
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 # sudo mkdir -v -m 0777 -p "$HOME/go/bin"
@@ -130,7 +134,9 @@ for in in "${INPUT_ARR[@]}"; do
   echo "-----"
 done
 
-# but these do not work?
+# TODO: need to implement input on whether or not to use a go.mod file, but it isn't working anyways
+
+# but these do not work? they redownload the base version... but it seems like it does actually work to download itself
 go1.23.3 version
 go1.23.3
 
