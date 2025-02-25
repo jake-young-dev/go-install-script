@@ -129,7 +129,8 @@ ls "$HOME/go/bin" #it lives here!
 
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 #register go-installed commands
-sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+# sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo cp -r "$HOME/go/bin/*" "$ACT_TOOLSDIRECTORY/go/bin"
 
 go version
 
