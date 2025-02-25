@@ -130,18 +130,16 @@ ls "$HOME/go/bin" #it lives here!
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 #register go-installed commands
 # sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
-sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/bin"
+# sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 echo "----"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
-sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin/go$TESTINGINPUT"
 echo "----"
 
 go version
-
-#maybe i have to link go cmd to bin as well
 
 #this is syntactically correct but command not found
 F_DL="go${TESTINGINPUT}"
