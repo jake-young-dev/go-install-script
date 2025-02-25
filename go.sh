@@ -134,7 +134,8 @@ go install "$E_DL"
 # echo "----"
 # ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
-sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+# sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 #might be dumb move
@@ -149,4 +150,3 @@ go1.22.2 download
 # "$F_DL" download
 
 go version
-go1.22.2 version
