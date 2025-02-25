@@ -111,12 +111,8 @@ fi
 # echo "$3"
 echo "$INPUTS"
 echo "-----"
-for i in "${INPUTS}" ; do
-    echo "$i"
-    echo "-"
-done
-
-for i in "${INPUTS[@]}" ; do
+INPUT_ARR=( $INPUTS )
+for i in "$INPUT_ARR" ; do
     echo "$i"
     echo "-"
 done
