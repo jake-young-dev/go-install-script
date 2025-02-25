@@ -125,11 +125,15 @@ ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
 echo "--"
 ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 echo "--"
-ls "$HOME/go/bin"
+ls "$HOME/go/bin" #it lives here!
+
+# sudo ln -s "$GOPATH/bin"/* /usr/bin
+#register go-installed commands
+sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 
 go version
 
 #this is syntactically correct but command not found
-# F_DL="go${TESTINGINPUT}"
-# echo "$F_DL"
-# "$F_DL" download
+F_DL="go${TESTINGINPUT}"
+echo "$F_DL"
+"$F_DL" download
