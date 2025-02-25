@@ -99,22 +99,16 @@ else
   exit 1
 fi
 
-echo "Base go version successfully installed"
+echo "Go version ${DL_VERSION} installed"
 
-echo "Grabbing 'extra' versions"
-#required for tests, will be optional in production
-if [[ "$3" == "." ]]; then
-  echo "FATAL: Missing required Linux archictecture parameter"
-  exit 1
-fi
+# installing any extra go versions with go itself
+echo "Installing extra go versions from 'versions' input"
 
-# echo "$3"
-echo "$INPUTS"
-echo "-----"
-INPUT_ARR=( $INPUTS )
+INPUT_ARR=( $INPUT_VERSIONS )
 for i in "${INPUT_ARR[@]}" ; do
-    echo "$i"
-    echo "-"
+    echo "Downloading and installing go version ${i}"
+    go install golang.org/dl/go${i}@latest
+    go${i} download
 done
 
 # this works but needs cleanup
