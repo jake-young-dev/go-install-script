@@ -17,7 +17,7 @@ runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }} ${{ inputs.versions }}
+      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }}
       shell: bash
       env:
         INPUT_VERSIONS: ${{ inputs.versions }}
