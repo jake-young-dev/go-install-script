@@ -135,12 +135,16 @@ go install "$E_DL"
 # ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin/go"
-# ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin/go"
+sudo ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin/go"
+sudo ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin/go/bin"
 echo "----"
 
+go1.22.2 download
+
 #this is syntactically correct but command not found
-F_DL="go${TESTINGINPUT}"
-echo "$F_DL"
-"$F_DL" download
+# F_DL="go${TESTINGINPUT}"
+# echo "$F_DL"
+# "$F_DL" download
 
 go version
+go1.22.2 version
