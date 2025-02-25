@@ -103,14 +103,15 @@ echo "Go version ${DL_VERSION} installed"
 
 echo "Installing extra go versions from 'versions' input"
 
-GB="${ACT_TOOLSDIRECTORY}/go-cmds/bin"
-sudo mkdir -v -m 0777 -p "$GB"
+# GB="${ACT_TOOLSDIRECTORY}/go-cmds/bin"
+# sudo mkdir -v -m 0777 -p "$GB"
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 INPUT_ARR=( $INPUT_VERSIONS )
 for i in "${INPUT_ARR[@]}"; do
     echo "Installing go version ${i}"
-    GOBIN="$GB" go install golang.org/dl/go${i}@latest
+    # GOBIN="$GB" go install golang.org/dl/go${i}@latest
+    go install golang.org/dl/go${i}@latest
 done
 
 # this is interesting and so far from good code that it's probably a sin, so that means its between me and
@@ -120,17 +121,17 @@ done
 
 # sudo mkdir -v -m 0777 -p "$HOME/go/bin"
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
-# sudo ln -s "$HOME/go/bin"/* /usr/bin
+sudo ln -s "$HOME/go/bin"/* /usr/bin
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
-  GOBIN="$GB" go${in} download # these lines are succeeding with: Success. You may now run 'go1.23.3'
+  # GOBIN="$GB" go${in} download 
+  go${in} download # these lines are succeeding with: Success. You may now run 'go1.23.3'
   echo "-----"
   go${in} version
 done
 
-# but these do not work
-GOBIN="$GB" go1.22.2 version
+# but these do not work?
 go1.22.2 version
 
 # sudo mkdir -v -m 0777 -p "$HOME/go/bin"
