@@ -111,7 +111,12 @@ fi
 # echo "$3"
 echo "$INPUTS"
 echo "-----"
-for i in "$INPUTS" ; do
+for i in "${INPUTS}" ; do
+    echo "$i"
+    echo "-"
+done
+
+for i in "${INPUTS[@]}" ; do
     echo "$i"
     echo "-"
 done
