@@ -129,6 +129,7 @@ done
 
 sudo mkdir -v -m 0777 -p "$HOME/go/bin"
 sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+sudo ln -s "$HOME/go/bin"/* /usr/bin
 
 #WORKING
 # installing any extra go versions with go itself
