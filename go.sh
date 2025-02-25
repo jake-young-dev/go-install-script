@@ -118,8 +118,8 @@ done
 # sudo mkdir -v -m 0777 -p "$GOPATH"
 #ACT_TOOLSDIRECTORY
 #sudo mv "$HOME/go/bin"/* 
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
