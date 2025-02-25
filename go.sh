@@ -112,7 +112,7 @@ fi
 echo "$INPUTS"
 echo "-----"
 INPUT_ARR=( $INPUTS )
-for i in "$INPUT_ARR" ; do
+for i in "${INPUT_ARR[@]}" ; do
     echo "$i"
     echo "-"
 done
