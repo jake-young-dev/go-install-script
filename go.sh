@@ -118,15 +118,18 @@ done
 
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
-sudo mkdir -v -m 0777 -p "$HOME/go/bin"
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
-sudo ln -s "$HOME/go/bin"/* /usr/bin
+# sudo mkdir -v -m 0777 -p "$HOME/go/bin"
+# sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
+# sudo ln -s "$HOME/go/bin"/* /usr/bin
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
-  GOBIN="$GB" go${in} download
+  GOBIN="$GB" go${in} download # these lines are succeeding with: Success. You may now run 'go1.23.3'
+  echo "-----"
+  go${in} version
 done
 
+# but these do not work
 GOBIN="$GB" go1.22.2 version
 go1.22.2 version
 
@@ -134,11 +137,12 @@ go1.22.2 version
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
 
 # so this "works" but the step after this job, running go1.22.2 version somehow "installs" go 1.23.5 (the base version) so
-# it doesn't fail but isn't correct. I cannot figure this out for the life of me
+# it doesn't fail but isn't correct. I cannot figure this out for the life of me. It has to be something w the path, but how is
+# it installing again...
 
 # sudo ln -s "$HOME/go/bin"/* /usr/bin #this didn't work obv
 
-#WORKING
+#WORKING PRESERVATION
 # installing any extra go versions with go itself
 # echo "Installing extra go versions from 'versions' input"
 
