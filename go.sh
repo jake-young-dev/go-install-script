@@ -125,7 +125,7 @@ ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
 echo "--"
 ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 echo "--"
-ls "/usr/local/go/bin"
+ls "$HOME/go/bin"
 
 go version
 
