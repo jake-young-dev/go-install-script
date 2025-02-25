@@ -134,7 +134,7 @@ go install "$E_DL"
 # echo "----"
 # ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
-sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
+sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin/go"
 ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 echo "----"
 
