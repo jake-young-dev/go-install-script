@@ -105,19 +105,20 @@ echo "Installing extra go versions from 'versions' input"
 
 GB="${ACT_TOOLSDIRECTORY}/go-cmds/bin"
 sudo mkdir -v -m 0777 -p "$GB"
-export GOBIN="$GB"
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
+# export GOBIN="$GB"
+# sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 INPUT_ARR=( $INPUT_VERSIONS )
 for i in "${INPUT_ARR[@]}"; do
     echo "Installing go version ${i}"
-    go install golang.org/dl/go${i}@latest
+    GOBIN="$GB" go install golang.org/dl/go${i}@latest
 done
 
 # sudo ln -s "$HOME/go/bin"/* /usr/bin
 # sudo mkdir -v -m 0777 -p "$GOPATH"
 #ACT_TOOLSDIRECTORY
 #sudo mv "$HOME/go/bin"/* 
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
