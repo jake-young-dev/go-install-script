@@ -117,26 +117,25 @@ echo "$E_DL"
 go install "$E_DL"
 
 # sudo ln -s "${ACT_TOOLSDIRECTORY}/go$TESTINGINPUT/bin"/* /usr/bin
-ls "$ACT_TOOLSDIRECTORY"
-echo "--"
-ls "$ACT_TOOLSDIRECTORY/go"
-echo "--"
-ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
-echo "--"
-ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
-echo "--"
-ls "$HOME/go/bin" #it lives here!
+# ls "$ACT_TOOLSDIRECTORY"
+# echo "--"
+# ls "$ACT_TOOLSDIRECTORY/go"
+# echo "--"
+# ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
+# echo "--"
+# ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
+# echo "--"
+# ls "$HOME/go/bin" #it lives here!
 
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 #register go-installed commands
 # sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 # sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
-echo "----"
-ls "$ACT_TOOLSDIRECTORY/go/bin"
+# echo "----"
+# ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
-ls "$ACT_TOOLSDIRECTORY/go/bin/go$TESTINGINPUT"
 echo "----"
 
 go version
