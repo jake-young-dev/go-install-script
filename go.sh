@@ -119,7 +119,7 @@ done
 #ACT_TOOLSDIRECTORY
 #sudo mv "$HOME/go/bin"/* 
 sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* /usr/bin
-sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go-cmds/bin"
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
 
 for in in "${INPUT_ARR[@]}"; do
   echo "Downloading go version ${in}"
