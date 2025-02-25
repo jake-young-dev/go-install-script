@@ -44,7 +44,7 @@ fi
 
 #handle go path
 GOPATH="${ACT_TOOLSDIRECTORY}/go/${DL_VERSION}/${DL_ARCH}"
-echo "Creating GOPATH directories"
+echo "Creating go directories"
 #create go DIRs
 # -v prints out each dir created
 # -m set chmod value for created dirs
@@ -99,7 +99,7 @@ else
   exit 1
 fi
 
-echo "Golang successfully installed"
+echo "Base go version successfully installed"
 
 echo "Grabbing 'extra' versions"
 #required for tests, will be optional in production
@@ -108,55 +108,21 @@ if [[ "$3" == "." ]]; then
   exit 1
 fi
 
-TESTINGINPUT="$3"
-ls "$GOPATH"
+echo "$3"
 
-echo "$TESTINGINPUT"
-E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
-echo "$E_DL"
-go install "$E_DL"
+# this works but needs cleanup
+# TESTINGINPUT="$3"
+# ls "$GOPATH"
 
-# sudo ln -s "${ACT_TOOLSDIRECTORY}/go$TESTINGINPUT/bin"/* /usr/bin
-# ls "$ACT_TOOLSDIRECTORY"
-# echo "--"
-# ls "$ACT_TOOLSDIRECTORY/go"
-# echo "--"
-# ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
-# echo "--"
-# ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
-# echo "--"
-# ls "$HOME/go/bin" #it lives here!
+# echo "$TESTINGINPUT"
+# E_DL="golang.org/dl/go${TESTINGINPUT}@latest"
+# echo "$E_DL"
+# go install "$E_DL"
 
-# sudo ln -s "$GOPATH/bin"/* /usr/bin
-#register go-installed commands
-# sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
-# sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
-# echo "----"
-# ls "$ACT_TOOLSDIRECTORY/go/bin"
-# echo "----"
-# # sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
-# sudo ln -s "$HOME/go/bin"/* "$GOPATH/bin"
-# ls "$ACT_TOOLSDIRECTORY/go/bin"
-# echo "----"
-#might be dumb move
-# sudo ln -s "$GOPATH/bin"/* /usr/bin
-
-#so here it is, go versions should get moved into the act dir under like go-versions or something then link to $home/go/bin for commands
-# OLD_VERSIONS="$ACT_TOOLSDIRECTORY/go-versions/bin"
-# sudo mkdir -v -m 0777 -p "$OLD_VERSIONS"
-# sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go-versions/bin"
 # sudo ln -s "$HOME/go/bin"/* /usr/bin
-# sudo ln -s "$ACT_TOOLSDIRECTORY/go-versions/bin"/* "$HOME/go/bin"
-sudo ln -s "$HOME/go/bin"/* /usr/bin
-# sudo ln -s "$GOPATH/bin"/* /usr/bin
-# sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 
-
-go1.22.2 download
-
-#this is syntactically correct but command not found
 # F_DL="go${TESTINGINPUT}"
 # echo "$F_DL"
 # "$F_DL" download
 
-go version
+# go version
