@@ -128,11 +128,11 @@ for in in "${INPUT_ARR[@]}"; do
   # GOBIN="$GB" go${in} download 
   go${in} download # these lines are succeeding with: Success. You may now run 'go1.23.3'
   echo "-----"
-  go${in} version
 done
 
 # but these do not work?
-go1.22.2 version
+go1.23.3 version
+go1.23.3
 
 # sudo mkdir -v -m 0777 -p "$HOME/go/bin"
 # sudo ln -s "$ACT_TOOLSDIRECTORY/go-cmds/bin"/* "$HOME/go/bin"
