@@ -136,10 +136,12 @@ ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
-ls "$ACT_TOOLSDIRECTORY/go/bin/$TESTINGINPUT"
+ls "$ACT_TOOLSDIRECTORY/go/bin/go$TESTINGINPUT"
 echo "----"
 
 go version
+
+#maybe i have to link go cmd to bin as well
 
 #this is syntactically correct but command not found
 F_DL="go${TESTINGINPUT}"
