@@ -135,7 +135,7 @@ go install "$E_DL"
 # ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 # sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
-sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo ln -s "$HOME/go/bin"/* "$GOPATH/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 #might be dumb move
