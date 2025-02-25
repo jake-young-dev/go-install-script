@@ -142,11 +142,12 @@ go install "$E_DL"
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 
 #so here it is, go versions should get moved into the act dir under like go-versions or something then link to $home/go/bin for commands
-OLD_VERSIONS="$ACT_TOOLSDIRECTORY/go-versions/bin"
-sudo mkdir -v -m 0777 -p "$OLD_VERSIONS"
-sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go-versions/bin"
+# OLD_VERSIONS="$ACT_TOOLSDIRECTORY/go-versions/bin"
+# sudo mkdir -v -m 0777 -p "$OLD_VERSIONS"
+# sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go-versions/bin"
 # sudo ln -s "$HOME/go/bin"/* /usr/bin
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-versions/bin"/* "$HOME/go/bin"
+# sudo ln -s "$ACT_TOOLSDIRECTORY/go-versions/bin"/* "$HOME/go/bin"
+sudo ln -s "$HOME/go/bin"/* /usr/bin
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 # sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 
