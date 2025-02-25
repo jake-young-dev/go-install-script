@@ -110,6 +110,10 @@ fi
 
 # echo "$3"
 echo "$INPUTS"
+echo "-----"
+for i in "$INPUTS" ; do
+    echo "$i"
+done
 
 # this works but needs cleanup
 # TESTINGINPUT="$3"
