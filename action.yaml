@@ -19,3 +19,5 @@ runs:
     - name: "run script"
       run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }} ${{ inputs.versions }}
       shell: bash
+      env:
+        INPUTS: ${{ inputs.versions }}

@@ -109,6 +109,7 @@ if [[ "$3" == "." ]]; then
 fi
 
 echo "$3"
+echo "$INPUTS"
 
 # this works but needs cleanup
 # TESTINGINPUT="$3"
