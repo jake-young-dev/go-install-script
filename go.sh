@@ -124,9 +124,12 @@ echo "--"
 ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH"
 echo "--"
 ls "$ACT_TOOLSDIRECTORY/go/$DL_VERSION/$DL_ARCH/bin"
+echo "--"
+ls "/usr/local/go/bin"
 
 go version
 
-F_DL="go${TESTINGINPUT}"
-echo "$F_DL"
-"$F_DL" download
+#this is syntactically correct but command not found
+# F_DL="go${TESTINGINPUT}"
+# echo "$F_DL"
+# "$F_DL" download
