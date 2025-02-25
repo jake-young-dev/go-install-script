@@ -104,6 +104,9 @@ echo "Go version ${DL_VERSION} installed"
 # installing any extra go versions with go itself
 echo "Installing extra go versions from 'versions' input"
 
+#link downloaded go commands
+sudo ln -s "$HOME/go/bin"/* /usr/bin
+
 INPUT_ARR=( $INPUT_VERSIONS )
 for i in "${INPUT_ARR[@]}" ; do
     echo "Downloading and installing go version ${i}"
