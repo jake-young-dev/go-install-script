@@ -146,7 +146,7 @@ OLD_VERSIONS="$ACT_TOOLSDIRECTORY/go-versions/bin"
 sudo mkdir -v -m 0777 -p "$OLD_VERSIONS"
 sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go-versions/bin"
 # sudo ln -s "$HOME/go/bin"/* /usr/bin
-sudo ln -s "$ACT_TOOLSDIRECTORY/go-versions/bin" "$HOME/go/bin"
+sudo ln -s "$ACT_TOOLSDIRECTORY/go-versions/bin"/* "$HOME/go/bin"
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 # sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 
