@@ -134,8 +134,9 @@ sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
-sudo cp -r "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo mv "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
+ls "$ACT_TOOLSDIRECTORY/go/bin/$TESTINGINPUT"
 echo "----"
 
 go version
