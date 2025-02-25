@@ -130,10 +130,11 @@ ls "$HOME/go/bin" #it lives here!
 # sudo ln -s "$GOPATH/bin"/* /usr/bin
 #register go-installed commands
 # sudo ln -s "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
+sudo mkdir -v -m 0777 -p "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
-sudo cp -r "$HOME/go/bin" "$ACT_TOOLSDIRECTORY/go/bin"
+sudo cp -r "$HOME/go/bin"/* "$ACT_TOOLSDIRECTORY/go/bin"
 ls "$ACT_TOOLSDIRECTORY/go/bin"
 echo "----"
 
