@@ -22,7 +22,9 @@ jobs:
         with:
           architecture: amd64
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
-          commands: github.com/jake-young-dev/kelp@v0.0.9
+          commands: |
+            github.com/jake-young-dev/kelp@v0.0.9
+            github.com/gohugoio/hugo@v0.144.2
 
       - name: "check go version"
         shell: bash
