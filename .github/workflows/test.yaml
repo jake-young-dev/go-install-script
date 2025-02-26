@@ -33,3 +33,7 @@ jobs:
       - name: "check kelp version"
         shell: bash
         run: kelp -v | grep "kelp version v0.0.9"
+
+      - name: "check hugo version (find something else hugo is huge-o)"
+        shell: bash
+        run: hugo -v
