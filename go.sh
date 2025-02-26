@@ -12,14 +12,17 @@ if [[ -z "$DL_VERSION_RAW" ]]; then
   exit 1
 fi
 echo "Found go version: ${DL_VERSION_RAW}"
+
+#checking for required input
 #"." is default arch value meaning required field was not set
-if [[ "$1" == "." ]]; then
+if [[ "$GO_INSTALL_ARCH" == "." ]]; then
   echo "FATAL: Missing required Linux archictecture parameter"
   exit 1
 fi
-DL_ARCH=$1
+DL_ARCH=$GO_INSTALL_ARCH
 DL_VSPL=( $DL_VERSION_RAW )
 DL_VERSION="${DL_VSPL[1]}"
+
 #ensure we have patch-level version, if not add 0 for stable releases
 # -P uses perl syntax
 DL_VERSION_PAD_CHECK="$(grep "^go [0-9]+.[0-9]+.[0-9]+" go.mod -P)"
@@ -34,7 +37,7 @@ echo "Checking if go is already installed"
 GO_CHECK=$(command -v go)
 if [[ "$GO_CHECK" ]]; then
   #if purge flag is set remove old go files
-  if [[ "$2" == "yes" ]]; then
+  if [[ "$GO_INSTALL_PURGE" == "yes" ]]; then
     echo "Removing old go versions"
     sudo rm -r /usr/bin/go 
     sudo rm -r /usr/bin/gofmt

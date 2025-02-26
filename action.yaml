@@ -1,23 +1,25 @@
 name: "go-install-script"
-description: "quick and dirty install for golang on linux workflows"
+description: "hacky install for golang and golang commands on linux workflows"
 inputs:
   architecture:
-    description: "linux architecture to use for Go files (e.g. amd64)"
+    description: "Required, the linux architecture to use when downloading Go files (e.g. amd64)"
     required: true
     default: "."
   purge:
-    description: "delete any previously installed go versions"
+    description: "Optional, deletes any previously installed go versions (yes|no)"
     required: false
     default: "no"
   commands:
-    description: "commands to be installed with 'go install' must include version"
+    description: "Optional, any commands to be installed with 'go install', must include version"
     required: false
     default: "."
 runs:
   using: composite
   steps:
     - name: "run script"
-      run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }}
+      run: ${{ github.action_path }}/go.sh
       shell: bash
       env:
         GO_INSTALL_COMMANDS: ${{ inputs.commands }}
+        GO_INSTALL_ARCH: ${{ inputs.architecture }}
+        GO_INSTALL_PURGE: ${{ inputs.purge }}

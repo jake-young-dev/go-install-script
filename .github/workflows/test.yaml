@@ -24,16 +24,11 @@ jobs:
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
           commands: |
             github.com/jake-young-dev/kelp@v0.0.9
-            github.com/gohugoio/hugo@v0.144.2
 
       - name: "check go version"
         shell: bash
         run: go version | grep "go version go1.24.0 linux/amd64"
 
-      - name: "check kelp version"
+      - name: "check go command version"
         shell: bash
         run: kelp -v | grep "kelp version v0.0.9"
-
-      - name: "check hugo version (find something else hugo is huge-o)"
-        shell: bash
-        run: hugo -v
