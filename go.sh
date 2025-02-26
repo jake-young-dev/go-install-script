@@ -42,47 +42,10 @@ if [[ "$GO_CHECK" ]]; then
   fi
 fi
 
-#handle go path
-GOPATH="${ACT_TOOLSDIRECTORY}/go/${DL_VERSION}/${DL_ARCH}"
-echo "Creating GOPATH directories"
-#create go DIRs
-# -v prints out each dir created
-# -m set chmod value for created dirs
-# -p create parent dirs as needed without errors
-sudo mkdir -v -m 0777 -p "$GOPATH"
-
-#download and extract go files
-echo "Downloading go files for ${DL_VERSION} with ${DL_ARCH}"
-#wget
-# -q quiets output
-# O- outputs file data to pipe instead of file
-#tar
-# -z use gzip
-# -x extract files
-# -f extract from "file"
-# - extract from pipe as a file
-# --strip-components=1 strip first leading component from file name on extraction
-# -C change to GOPATH directory
-if sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - --strip-components=1 -C "$GOPATH"; then
-  echo "Downloaded go files"
-else
-  echo "FATAL: Unable to download and extract go files"
-  exit 1
-fi
-
-#link bin directories for system command
-# -s symbolic link
-echo "Creating symbolic link for go command"
-sudo ln -s "$GOPATH/bin"/* /usr/bin
-
-#grab installed go version
-DL_GO_CMD_VERSION=$("$GOPATH/bin/go" version)
-if [[ -z "$DL_GO_CMD_VERSION" ]]; then
-  echo "FATAL: Failed to install go files"
-  exit 1
-else
-  echo "Go setup for {$DL_GO_CMD_VERSION}"
-fi
+sudo mkdir -v -m 0777 -p /usr/local/go
+sudo wget -qO- "https://golang.org/dl/go${DL_VERSION}.linux-${DL_ARCH}.tar.gz" | sudo tar -zxf - -C /usr/local
+export PATH=$PATH:/usr/local/go/bin
+echo "/usr/local/go/bin" >> "$GITHUB_PATH"
 
 #grab go version using go command
 GLOBAL_GO_CMD_VERSION=$(go version)
@@ -91,12 +54,14 @@ if [[ -z "$GLOBAL_GO_CMD_VERSION" ]]; then
   exit 1
 fi
 
-#ensure global go version matches the requested installed version
-if [[ "$DL_GO_CMD_VERSION" == "$GLOBAL_GO_CMD_VERSION" ]]; then
-  echo "Go command successfully setup for: {$GLOBAL_GO_CMD_VERSION}"
-else
-  echo "FATAL: Global go version does not match installed version, is go already installed?"
-  exit 1
-fi
+GP=$(go env GOPATH)/bin
+export PATH=$PATH:$GP
+echo "$GP" >> "$GITHUB_PATH"
 
-echo "Golang successfully installed"
+if [[ "$GO_INSTALL_COMMANDS" != "." ]]; then
+  INPUT_ARR=( $GO_INSTALL_COMMANDS )
+  for i in "${INPUT_ARR[@]}"; do
+      echo "Installing go command from ${i}"
+      go install ${i}
+  done
+fi

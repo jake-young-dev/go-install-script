@@ -2,7 +2,7 @@ name: "tests"
 run-name: "tests"
 on:
   push:
-    branches: master
+    branches: new/gocmds
     paths: 
       - go.sh
       - action.yaml
@@ -18,11 +18,16 @@ jobs:
           echo -e "module github.com/jake-young-dev/go-install-script\n\ngo 1.24" > go.mod
 
       - name: "run go install script"
-        uses: jake-young-dev/go-install-script@master
+        uses: jake-young-dev/go-install-script@new/gocmds
         with:
           architecture: amd64
           purge: yes #removes old go versions if present (github hosted runners come preloaded with go)
+          commands: github.com/jake-young-dev/kelp@v0.0.9
 
       - name: "check go version"
         shell: bash
         run: go version | grep "go version go1.24.0 linux/amd64"
+
+      - name: "check kelp version"
+        shell: bash
+        run: kelp -v | grep "kelp version v0.0.9"

@@ -9,9 +9,15 @@ inputs:
     description: "delete any previously installed go versions"
     required: false
     default: "no"
+  commands:
+    description: "commands to be installed with 'go install' must include version"
+    required: false
+    default: "."
 runs:
   using: composite
   steps:
     - name: "run script"
       run: ${{ github.action_path }}/go.sh ${{ inputs.architecture }} ${{ inputs.purge }}
       shell: bash
+      env:
+        GO_INSTALL_COMMANDS: ${{ inputs.commands }}
