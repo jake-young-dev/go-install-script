@@ -8,7 +8,7 @@ A simple, hacky github action to install golang and golang commands on linux hos
 ## Usage
 The workflow file contains a good [example](https://github.com/jake-young-dev/go-install-script/blob/master/.github/workflows/test.yaml#L20). I recommend using a tagged release to avoid unexpected changes that may come to the master branch, there may be breaking changes until v1.0.0
 #### Go verions
-Go version is determined using the go version found in the go.mod file in the root of working directory. Go files are pulled directly from the go download [site](https://go.dev/dl/) and all go commands are installed using 'go install'
+Go version is determined using the go.mod file in the root of working directory. Go files are pulled directly from the go download [site](https://go.dev/dl/) and all go commands are installed using 'go install'
 #### Inputs
 Some command arguments are required for this script to run and are supplied as inputs to the action. <br />
 - [architecture] Required, the CPU architecture for the go files data pull
