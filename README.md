@@ -21,15 +21,5 @@ A simple testing job is triggered on a push to the master branch, the job will c
 
 <br />
 
-## Benchmarks
-Benchmarks are pulled using git action runner timestamps and includes the teardown time.
-| Install Method | Time to Run |
-| - | - |
-| go.sh | 5s |
-| with commands | ~12s depending on command size |
-| actions/setup-go@v5 | 4m30s |
-
-<br />
-
 ## Issues
 This repo is a as brain-dead as I could make it and is intended to be as fast and low-level as possible. The code is loosely based off of the go tool script from [catthehacker](https://github.com/catthehacker/docker_images/blob/master/linux/ubuntu/scripts/go.sh) but we have strayed pretty far from that. Please open an issue for any problems or suggestions.
